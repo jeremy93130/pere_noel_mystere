@@ -9,12 +9,15 @@
 
 	<!-- Section de la bannière -->
 	<section class="banniere_section">
+
 		<div class="banniere_div" style="background-image: url('{{ asset('assets/img/noel.jpg') }}');">
 			<h1>Invitez les membres de votre famille et/ou amis !</h1>
 
 			{{ form_start(form) }}
 
+			
 			<!-- Champ email principal -->
+
 			{{ form_row(form.email) }}
 			<div id="emails-container" data-prototype="{{ form_widget(form.emails.vars.prototype)|e }}">
 				{{ form_row(form.emails) }}

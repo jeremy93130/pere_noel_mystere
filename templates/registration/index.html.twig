@@ -10,11 +10,20 @@
 	<!-- Section de la bannière -->
 	<section class="banniere_section">
 		<div class="banniere_div" style="background-image: url('{{ asset('assets/img/noel.jpg') }}');">
+			{% for label, messages in app.flashes %}
+				{% for message in messages %}
+					<div class="alert alert-{{ label }}">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endfor %}
 			<h1>Père Noël Mystère</h1>
 			{{ form_start(form) }}
-            {{form_row(form.name)}}
+			{{form_row(form.name)}}
 			{{ form_end(form) }}
-            <a href="{{path('app_cree')}}"> Déjà crée ? cliquez ici </a>
+			<a href="{{path('app_retrouve')}}">
+				Déjà crée ? cliquez ici
+			</a>
 		</div>
 	</section>
 {% endblock %}
