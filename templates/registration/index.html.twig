@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription pour le Père Noël Mystère
+{% endblock %}
+
+{% block body %}
+	<!-- Section de la neige -->
+	<div class="snowflakes" aria-hidden="true"></div>
+	<!-- Assurez-vous que l'élément existe bien dans la page -->
+	<!-- Section de la bannière -->
+	<section class="banniere_section">
+		<div class="banniere_div" style="background-image: url('{{ asset('assets/img/noel.jpg') }}');">
+			<h1>Père Noël Mystère</h1>
+			{{ form_start(form) }}
+            {{form_row(form.name)}}
+			{{ form_end(form) }}
+            <a href="{{path('app_cree')}}"> Déjà crée ? cliquez ici </a>
+		</div>
+	</section>
+{% endblock %}
