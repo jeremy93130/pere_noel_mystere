@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -41,7 +42,6 @@ class InvitationsController extends AbstractController
                     } else {
                         throw new \Exception("L'adresse mail est déjà enregistrée chez nous !");
                     }
-
                 } else {
                     throw new \Exception('Veuillez Entrer votre adresse email');
                 }
@@ -73,6 +73,17 @@ class InvitationsController extends AbstractController
         return $this->render('invitations/index.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
 
+    #[Route('/liste/{id}', name: 'app_liste')]
+    public function liste(Session $session, $id)
+    {
+        $liste = $session->get('familly' . $id, []);
+
+        $form = $this->createForm(InvitationsType::class);
+        return $this->render('invitations/liste.html.twig', [
+            'form' => $form,
+            'liste' => $liste
+        ]);
     }
 }

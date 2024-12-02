@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription pour le Père Noël Mystère
+{% endblock %}
+
+{% block body %}
+	<!-- Section de la neige -->
+	<div class="snowflakes" aria-hidden="true"></div>
+
+	<!-- Section de la bannière -->
+	<section class="banniere_section">
+
+		<div class="banniere_div" style="background-image: url('{{ asset('assets/img/noel.jpg') }}');">
+			<h1>Reprennez votre liste !</h1>
+			<h2>
+				Personnes déjà invitées
+			</h2>
+
+			{% if liste is defined %}
+				{% for list in liste %}
+					<ul>
+						<li>
+							{{list.email}}
+						</li>
+					</ul>
+				{% endfor %}
+			{% endif %}
+
+			{{ form_start(form) }}
+
+
+			<!-- Champ email principal -->
+
+			<div id="emails-container" data-prototype="{{ form_widget(form.emails.vars.prototype)|e }}">
+				{{ form_row(form.emails) }}
+			</div>
+			<button type="button" id="add-email">Ajouter un email</button>
+			{{form_row(form.submit)}}
+		</div>
+	</section>
+
+{% endblock %}
