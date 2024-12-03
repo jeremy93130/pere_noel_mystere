@@ -27,7 +27,6 @@ class InvitationsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = new User;
             $famillyGroup = $famillyGroupRepository->find($id);
-            $data = $form->getData();
             $emailPrincipal = $form->get('email')->getData();
             $emailsInvites = $form->get('emails')->getData();
 
@@ -67,7 +66,7 @@ class InvitationsController extends AbstractController
 
 
 
-            return $this->redirectToRoute('success_page');
+            return $this->redirectToRoute('app_confirmation');
         }
 
         return $this->render('invitations/index.html.twig', [

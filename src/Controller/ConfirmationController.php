@@ -12,7 +12,7 @@ class ConfirmationController extends AbstractController
     public function index(): Response
     {
         return $this->render('confirmation/index.html.twig', [
-            'controller_name' => 'ConfirmationController',
+            'controller_name' => 'Les invitations ont bien été envoyées',
         ]);
     }
 }
